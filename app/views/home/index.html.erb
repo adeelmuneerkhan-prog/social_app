@@ -1,0 +1,16 @@
+<h1>Welcome to Social App</h1>
+
+<% if authenticated? %>
+  <p>You are logged in.</p>
+
+  <p>Welcome to your social app!</p>
+
+  <%= button_to "Logout", session_path, method: :delete %>
+
+<% else %>
+  <p>You are not logged in.</p>
+
+  <%= link_to "Login", new_session_path %>
+  |
+  <%= link_to "Create Account", new_user_path %>
+<% end %>

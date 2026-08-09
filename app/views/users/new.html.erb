@@ -1,0 +1,45 @@
+<h1>Create Account</h1>
+
+<%= form_with model: @user, url: users_path do |form| %>
+
+  <% if @user.errors.any? %>
+    <div>
+      <h2><%= pluralize(@user.errors.count, "error") %> prevented signup:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email_address, "Email" %><br>
+    <%= form.email_field :email_address, required: true %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :password, "Password" %><br>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :password_confirmation, "Confirm Password" %><br>
+    <%= form.password_field :password_confirmation, required: true %>
+  </div>
+
+  <br>
+
+  <%= form.submit "Create Account" %>
+
+<% end %>
+
+<p>
+  Already have an account?
+  <%= link_to "Login", new_session_path %>
+</p>
